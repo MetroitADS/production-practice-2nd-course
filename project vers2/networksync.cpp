@@ -142,9 +142,9 @@ void NetworkSync::onDownloadFinished(QNetworkReply* reply)
             emit eventsDownloaded(downloadedEvents);
             emit syncFinished(true, "События успешно загружены");
         }
-        else {
-            emit syncFinished(false, "Никаких событий с сервера не получено");
-        }
+        //else {
+        //    emit syncFinished(false, "Никаких событий с сервера не получено");
+        //}
     }
     else {
         // Обработка других ошибок
