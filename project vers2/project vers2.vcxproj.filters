@@ -82,8 +82,5 @@
     <QtUic Include="eventdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="settingsdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
   </ItemGroup>
 </Project>

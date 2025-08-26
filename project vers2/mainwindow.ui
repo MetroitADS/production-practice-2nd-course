@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Modern Calendar</string>
+   <string>Календарь</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {

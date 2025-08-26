@@ -60,7 +60,6 @@ public:
         authTokenEdit = new QLineEdit(widget);
         authTokenEdit->setObjectName(QString::fromUtf8("authTokenEdit"));
         authTokenEdit->setEchoMode(QLineEdit::Password);
-        authTokenEdit->setPlaceholderText(QString::fromUtf8("Optional authentication token"));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, authTokenEdit);
 
@@ -85,14 +84,14 @@ public:
         QObject::connect(buttonBox, &QDialogButtonBox::rejected, SettingsDialog, &QDialog::reject);
 
         QMetaObject::connectSlotsByName(SettingsDialog);
-    } // setupUi
+    } 
 
     void retranslateUi(QDialog* SettingsDialog)
     {
-        SettingsDialog->setWindowTitle(QCoreApplication::translate("SettingsDialog", "Settings", nullptr));
-        label->setText(QCoreApplication::translate("SettingsDialog", "Server URL:", nullptr));
-        label_2->setText(QCoreApplication::translate("SettingsDialog", "Auth Token:", nullptr));
-        autoSyncCheckBox->setText(QCoreApplication::translate("SettingsDialog", "Auto sync on startup", nullptr));
+        SettingsDialog->setWindowTitle(QCoreApplication::translate("SettingsDialog", "Настройки", nullptr));
+        label->setText(QCoreApplication::translate("SettingsDialog", "URL:", nullptr));
+        label_2->setText(QCoreApplication::translate("SettingsDialog", "Token:", nullptr));
+        autoSyncCheckBox->setText(QCoreApplication::translate("SettingsDialog", "Автоматический запуск", nullptr));
     } // retranslateUi
 
 };

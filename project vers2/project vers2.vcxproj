@@ -103,7 +103,6 @@
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="eventdialog.ui" />
-    <QtUic Include="settingsdialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ui_settingsdialog.h" />
