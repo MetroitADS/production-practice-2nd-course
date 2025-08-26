@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Modern Calendar</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QCalendarWidget" name="calendarWidget">
+      <property name="styleSheet">
+       <string notr="true">/*Менять тут*/
+/*Глобальное*/
+QCalendarWidget QToolButton {
+    height: 36px;
+    min-width: 80px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    margin: 2px;
+}
+QCalendarWidget QToolButton:hover {
+    background-color: #f0f4f8;
+    border-color: #3498db;
+}
+QCalendarWidget QToolButton:pressed {
+    background-color: #e3f2fd;
+}
+
+/*Выбор месяца*/
+QCalendarWidget QMenu {
+    background-color: white;
+    padding: 8px;
+}
+QCalendarWidget QMenu:item {
+    padding: 6px 12px;
+    color: #2c3e50;
+}
+QCalendarWidget QMenu::item:selected {
+    background-color: #3498db;
+    color: white;
+}
+QCalendarWidget QMenu::item:pressed {
+    background-color: #2980b9;
+    color: white;
+}
+
+/*Год*/
+QCalendarWidget QSpinBox {
+    width: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2c3e50;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 6px 12px;
+    selection-background-color: #3498db;
+    selection-color: white;
+}
+
+/* Загаловок/месяц/дата/ стрелки */
+QCalendarWidget QWidget#qt_calendar_navigationbar {
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px;
+}
+QCalendarWidget QWidget#qt_calendar_navigationbar QToolButton {
+    background-color: transparent;
+    border: none;
+    color: #2c3e50;
+    font-weight: 600;
+}
+QCalendarWidget QWidget#qt_calendar_navigationbar QToolButton:hover {
+    color: #3498db;
+    background-color: #f0f4f8;
+    border-radius: 6px;
+}
+
+/* Дни */
+QCalendarWidget QTableView {
+    alternate-background-color: #f8f9fa;
+    gridline-color: #e0e0e0;
+}
+QCalendarWidget QTableView::item:hover {
+    background-color: #f0f4f8;
+    border-radius: 4px;
+}
+QCalendarWidget QAbstractItemView:enabled {
+    font-size: 14px;
+}</string>
+      </property>
+      <property name="gridVisible">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QListWidget" name="eventsList">
+        <property name="styleSheet">
+         <string notr="true">QListWidget {
+    font-size: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px;
+    background-color: white;
+    outline: none;
+}
+QListWidget::item {
+    padding: 12px 16px;
+    margin: 4px 0;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: white;
+    font-weight: 500;
+}
+QListWidget::item:hover {
+    background-color: #f8f9fa;
+    border-color: #3498db;
+    transform: translateY(-1px);
+}
+QListWidget::item:selected {
+    background-color: #3498db;
+    color: white;
+    border-color: #2980b9;
+    font-weight: 600;
+}
+QListWidget::item:selected:hover {
+    background-color: #2980b9;
+    border-color: #2471a3;
+}
+QScrollBar:vertical {
+    border: none;
+    background-color: #f8f9fa;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #bdc3c7;
+    border-radius: 6px;
+    min-height: 30px;
+}
+QScrollBar::handle:vertical:hover {
+    background-color: #95a5a6;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="eventDetails">
+        <property name="styleSheet">
+         <string notr="true">QTextEdit {
+    font-size: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 16px;
+    background-color: white;
+    line-height: 1.6;
+}
+QTextEdit:focus {
+    border-color: #3498db;
+}
+QScrollBar:vertical {
+    border: none;
+    background-color: #f8f9fa;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+QScrollBar::handle:vertical {
+    background-color: #bdc3c7;
+    border-radius: 6px;
+    min-height: 30px;
+}
+QScrollBar::handle:vertical:hover {
+    background-color: #95a5a6;
+}</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="buttonLayout">
+      <item>
+       <widget class="QPushButton" name="addButton">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 120px;
+}
+
+QPushButton:hover {
+    background-color: #219a52;
+    transform: translateY(-1px);
+}
+
+QPushButton:pressed {
+    background-color: #1e8749;
+    transform: translateY(0px);
+}
+
+QPushButton:disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d;
+}</string>
+        </property>
+        <property name="text">
+         <string>Добавить</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="editButton">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 120px;
+}
+
+QPushButton:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+QPushButton:pressed {
+    background-color: #2471a3;
+    transform: translateY(0px);
+}
+
+QPushButton:disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d;
+}</string>
+        </property>
+        <property name="text">
+         <string>Измнить</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="deleteButton">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 120px;
+}
+
+QPushButton:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+QPushButton:pressed {
+    background-color: #a93226;
+    transform: translateY(0px);
+}
+
+QPushButton:disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d;
+}</string>
+        </property>
+        <property name="text">
+         <string>Удалить</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="syncButton">
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #9b59b6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 100px;
+}
+
+QPushButton:hover {
+    background-color: #8e44ad;
+    transform: translateY(-1px);
+}
+
+QPushButton:pressed {
+    background-color: #7d3c98;
+    transform: translateY(0px);
+}</string>
+        </property>
+        <property name="text">
+         <string>Синхронизация</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="disconnectButton">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 100px;
+}
+
+QPushButton:hover {
+    background-color: #d35400;
+    transform: translateY(-1px);
+}
+
+QPushButton:pressed {
+    background-color: #ba4a00;
+    transform: translateY(0px);
+}</string>
+        </property>
+        <property name="text">
+         <string>Отключиться</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar {
+    background-color: #2c3e50;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px;
+    border: none;
+}
+
+QMenuBar::item {
+    background-color: transparent;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+QMenuBar::item:selected {
+    background-color: #3498db;
+}
+
+QMenuBar::item:pressed {
+    background-color: #2980b9;
+}</string>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="styleSheet">
+     <string notr="true">QMenu {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+QMenu::item {
+    padding: 8px 24px 8px 16px;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+QMenu::item:selected {
+    background-color: #3498db;
+    color: white;
+}
+
+QMenu::item:disabled {
+    color: #bdc3c7;
+}</string>
+    </property>
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExit"/>
+    <addaction name="actionExport"/>
+    <addaction name="actionImport"/>
+    <addaction name="actionSettings_3"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="styleSheet">
+    <string notr="true">QStatusBar {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    font-size: 12px;
+    padding: 8px;
+    border-top: 1px solid #e0e0e0;
+}</string>
+   </property>
+  </widget>
+  <action name="actionExit">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionExport">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionImport">
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="actionManageNotifications">
+   <property name="text">
+    <string>actionManageNotifications</string>
+   </property>
+  </action>
+  <action name="actionSettings_2">
+   <property name="text">
+    <string>actionSettings</string>
+   </property>
+  </action>
+  <action name="actionSettings_3">
+   <property name="text">
+    <string>menuSettings</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
