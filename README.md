@@ -18,7 +18,7 @@ By default, the local mode is enabled.
 
 ### Network
 To enable network function:
-1. **Start server** (located ia a separate branch)
+1. **Start server** (located ia a separate branch) https://github.com/MetroitADS/production-practice-2nd-course/tree/server
 2. **Get the server URL** default: 'http://localhost:3000'
 3. **Get the token** It is located in the same folder as the server in config.json
 4. **Connect the server**
