@@ -1,0 +1,13 @@
+{
+  "port": 3000,
+  "tokens": {
+    "read-only-token": ["read"],
+    "editor-token": ["read", "create", "update"],
+    "admin-token": ["read", "create", "update", "delete", "sync"],
+    "super-admin-token": ["*"],
+    "69b3cfe9761926afa16f12f8ee02528d2654c3c8c577815a013da6b02e59fb73": ["read"]
+  },
+  "eventsFile": "events.json",
+  "backupEnabled": true,
+  "backupDir": "backups"
+}
